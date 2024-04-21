@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react";
+import './Logo.css';
 
-function Logo(titre,image) {
+function Logo({titre, imageSrc}) {
   return (
-    <div>
-        <img src={image} alt="Logo" />
-        <text>{titre}</text>
-      
+    <div className="logo-container">
+      <img src={imageSrc} alt="Logo" ClassName="logo-img" />
+      <span className="logo-text">{titre}</span>
     </div>
-  )
+  );
 }
 
-export default Logo
+export default Logo;
