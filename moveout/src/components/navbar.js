@@ -26,7 +26,7 @@ const imageSrc = '/Image_Logos/moveoutLogo2.svg'
         </div>
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
          <li className='nav-item'>
-            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+            <Link to='/' className='nav-links-mobile' onClick={closeMobileMenu}>
                 Home
             </Link>
             
@@ -35,14 +35,14 @@ const imageSrc = '/Image_Logos/moveoutLogo2.svg'
 
            
         </li>   
-        <li><Link to='/' className='nav-links' onClick={closeMobileMenu}>
+        <li className='nav-item' ><Link to='/demenagement' className='nav-links-mobile' onClick={closeMobileMenu}>
                Déménager
             </Link></li>
-        <li><Link to='/' className='nav-links' onClick={closeMobileMenu}>
+        <li className='nav-item'><Link to='/about-us' className='nav-links-mobile' onClick={closeMobileMenu}>
                 About us
             </Link></li>
-        <li>
-        <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+        <li className='nav-item'>
+        <Link to='/sign-up' className='nav-links-mobile' onClick={closeMobileMenu}>
                 Sign Up
             </Link>
         </li>
