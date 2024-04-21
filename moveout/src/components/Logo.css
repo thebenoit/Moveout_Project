@@ -1,18 +1,24 @@
-
 .logo-container {
-flexDirection: "row";
-justifyContent: "flex-start";
-borderBottomColor: "#DDD";
-borderBottomWidth: 2;
-alignItems: "center";
-paddingTop: 5;
-margin: 15;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-bottom-color: #DDD;
+    border-bottom-width: 2px;
+    align-items: center;
+    padding-top: 5px;
+    margin: 15px;
+  }
+  
+  .logo-img {
+    width: 100px;
+    height: 100px;
+    padding-right: 10px;
+  }
 
-}
+  .logo-text {
+    font-size: 35px;
+    margin: 10px;
+    padding: 10;
 
-.logo-img{
-    width: 110;
-    height: 110;
-    paddingRight: 10,;
-}
-
+   
+  }
+  
