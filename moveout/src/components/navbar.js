@@ -1,12 +1,24 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import MoveoutLogo from './Logo'
+import {Button} from './Button.js'
+import './navbar.css'
 
 function Navbar() {
 const [click,setClick] = useState(false)
+const [button, setButton] = useState(true);
 
 const handleClick = () => setClick(!click)
 const closeMobileMenu = () => setClick(false)
+
+const showButton = () => {
+    if(window.innerWidth <= 960) {
+        setButton(false);
+    } else {
+        setButton(true);
+    }
+};
+window.addEventListener('resize', showButton);
 const imageSrc = '/Image_Logos/moveoutLogo2.svg'
   return (
     <>
@@ -16,6 +28,7 @@ const imageSrc = '/Image_Logos/moveoutLogo2.svg'
       
 
             <MoveoutLogo
+                
                 titre={"Moveout"}
                 imageSrc={imageSrc}
 
@@ -48,6 +61,7 @@ const imageSrc = '/Image_Logos/moveoutLogo2.svg'
         </li>
         
         </ul>
+        {button && <Button buttonStyles='btn--outline'> Sign Up</Button>}
        </div>
 
 
