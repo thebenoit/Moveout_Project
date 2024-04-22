@@ -1,5 +1,4 @@
 .logo-container {
-    color: #242424;
     justify-self: start;
     margin: 40px;
     cursor: pointer;
@@ -7,6 +6,7 @@
     font-size: 2rem;
     display: flex;
     align-items: center;
+    
 
 
    /* flex-direction: row;
@@ -21,7 +21,7 @@
   .logo-img {
     width: 100px;
     height: 100px;
-   padding-right: 10px;
+    padding-right: 10px;
   }
 
   .logo-text {
@@ -29,6 +29,8 @@
     margin: -20px;
     padding: 10;
     align-self: center;
+    
+    
 
    
   }
