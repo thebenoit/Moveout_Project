@@ -45,7 +45,18 @@ function Navbar() {
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                Déménager
+                <i class="fa-solid fa-truck-fast"></i>
+              </Link>
+            </li>
+            
+            
+            <li className="nav-item">
+              <Link
+                to="/sign-up"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
+                <i class="fa-regular fa-user"></i>
               </Link>
             </li>
             <li className="nav-item">
@@ -55,16 +66,6 @@ function Navbar() {
                 onClick={closeMobileMenu}
               >
                 About us
-              </Link>
-            </li>
-            
-            <li className="nav-item">
-              <Link
-                to="/sign-up"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Sign Up
               </Link>
             </li>
           </ul>
