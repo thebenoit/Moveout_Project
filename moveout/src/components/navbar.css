@@ -19,6 +19,12 @@
   }
   
   
+  .main-Logo-container {
+    text-decoration: none;
+    color: #242424;
+    
+  }
+
   
   .fa-typo3 {
     margin-left: 0.5rem;
@@ -51,7 +57,7 @@
   }
   
   .nav-links:hover {
-    border-bottom: 4px solid #242424;
+    border-bottom: 3px solid #242424;
     transition: all 0.2s ease-out;
   }
   

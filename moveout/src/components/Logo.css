@@ -1,12 +1,11 @@
 .logo-container {
-    justify-self: start;
-    margin: 40px;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    
+  justify-self: start;
+  margin: 40px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
 
 
    /* flex-direction: row;

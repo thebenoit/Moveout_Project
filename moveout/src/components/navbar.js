@@ -29,11 +29,15 @@ function Navbar() {
     <>
       <nav className="navbar">
         <div className="navbar-container">
-
+          <Link 
+          className="main-Logo-container"
+          to="/">
           <MoveoutLogo 
           titre={"Moveout"} 
           imageSrc={imageSrc}
           action={closeMobileMenu} />
+          </Link>
+          
 
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fa-solid fa-xmark" : "fas fa-bars"} />
