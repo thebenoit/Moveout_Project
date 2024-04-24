@@ -7,8 +7,8 @@ function HeroSection() {
   return (
     <div className='hero-container'>
         <video src="./videos/mtlStreet.mp4" autoPlay loop muted/>
-        <h1>Appartements Abordable?</h1>
-        <p>Trouves des Appartements abordable à montréal</p>
+        <h1> Tu cherches un Appartement Abordable?</h1>
+        <p>Appuie sur le bouton ci-dessous</p>
         <div className='hero-btns'>
         <Button
         className='btns'

@@ -9,12 +9,48 @@ function Card() {
         <div className="cards__container">
             <div className="cards__wrapper">
                 <ul className='cards__items'>
-                <CardItem/>
-                <CardItem/>
-                <CardItem/>
+                <CardItem
+                src='/Image_Logos/img_room_test.jpg'
+                text="900 3 beds Appartment"
+                label='Facebook'
+                path='/'
                 
-                
+                />
+                <CardItem
+                src='/Image_Logos/img_room_test.jpg'
+                text="900 3 beds Appartment"
+                label='Centris'
+                path='/'
+                />    
+                <CardItem
+                src='/Image_Logos/img_room_test.jpg'
+                text="900 3 beds Appartment"
+                label='Centris'
+                path='/'
+                />                                         
                 </ul>
+                <ul className='cards__items'>
+                <CardItem
+                src='/Image_Logos/img_room_test.jpg'
+                text="900 3 beds Appartment"
+                label='Centris'
+                path='/'
+                />     
+                 
+                 <CardItem
+                src='/Image_Logos/img_room_test.jpg'
+                text="900 3 beds Appartment"
+                label='Centris'
+                path='/'
+                />     
+                 <CardItem
+                src='/Image_Logos/img_room_test.jpg'
+                text="900 3 beds Appartment"
+                label='Centris'
+                path='/'
+                />      
+                </ul>
+                
 
             </div>
         </div>
