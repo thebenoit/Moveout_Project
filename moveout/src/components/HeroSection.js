@@ -11,6 +11,7 @@ function HeroSection() {
         <p>Appuie sur le bouton ci-dessous</p>
         <div className='hero-btns'>
         <Button
+        typeButton={'btn'}
         className='btns'
         buttonStyle='btn--outline'
         buttonSize='btn--large'

@@ -24,7 +24,19 @@
   background-repeat: no-repeat;
   color: #fff;
   font-size: 100px;
+
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+.demenagement > Button {
+  width: 10px;
+
+}
+
+
 
 .products {
   /*background-image: url('/images/img-1.jpg');*/
