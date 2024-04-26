@@ -4,6 +4,7 @@ import re
 import pandas as pd
 import matplotlib.pyplot as plt
 import time
+from selenium.webdriver.common.by import By
 
 #Set up Splinter
 browser = Browser('chrome')
@@ -29,6 +30,8 @@ url = f"{base_url}minPrice={min_price}&maxPrice={max_price}&minBedrooms={min_bed
 #&petsAllowed={pets_allowed}
 
 browser.visit(url)
+
+#folder = browser.find_element(By.XPATH, "//i[@class='x1b0d499 x1d69dk1']")
 
 # Scroll down to load more results
 
@@ -70,7 +73,10 @@ city_list = [city.text.strip() for city in city_div]
 urls_div = market_soup.find_all('a',class_="x1i10hfl xjbqb8w x1ejq31n xd10rxx x1sy0etr x17r0tee x972fbf xcfux6l x1qhh985 xm0m39n x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x1heor9g x1lku1pv")
 urls_list = [url.get('href') for url in urls_div]
 
-print(titles_list)
+img_div = market_soup.find_all('img', class_="xt7dq6l xl1xv1r x6ikm8r x10wlt62 xh8yej3")
+img_list = [img.get('src') for img in img_div]
+
+
 
 appartment_list = []
 
@@ -88,9 +94,16 @@ for i in range(min_length):
         #Add city and URL directly
         room_dict["City"] = city_list[i]
         room_dict["URL"] = urls_list[i]
+        room_dict["Image"] = img_list[i]
         appartment_list.append(room_dict)
 
     else:
         continue #Skip this entry and move to the next one
 
 #print("     ",appartment_list,"     ")
+
+appartment_list_df = pd.DataFrame(appartment_list)
+
+appartment_list_df['URL'] = 'https://www.facebook.com/' + appartment_list_df['URL']
+
+appartment_list_df
