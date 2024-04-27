@@ -23,13 +23,28 @@ days_listed = 7  # Nombre de jours depuis la mise en ligne
 pets_allowed = True  # Animaux autorisés
 furnished = False  # Meublé ou non
 neighborhood = "Montreal"  # Quartier souhaité
+recherche = "appartment"
 
 # Construction de l'URL complet
 url = f"{base_url}minPrice={min_price}&maxPrice={max_price}&minBedrooms={min_bedrooms}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={neighborhood}&exact=false"
 #&furnished={furnished}
 #&petsAllowed={pets_allowed}
 
-browser.visit(url)
+#1bedroom
+url_moins_que_1000_1_bedroom = f"{base_url}minPrice={min_price}&maxPrice={1000}&minBedrooms={1}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
+url_moins_que_1500_1_bedroom = f"{base_url}minPrice={min_price}&maxPrice={1500}&minBedrooms={1}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
+url_plus_que_1500_1_bedroom = f"{base_url}minPrice={1500}&maxPrice={3000}&minBedrooms={1}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
+#2bedrooms
+url_moins_que_1000_2_bedroom = f"{base_url}minPrice={min_price}&maxPrice={1000}&minBedrooms={2}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
+url_moins_que_1500_2_bedroom = f"{base_url}minPrice={min_price}&maxPrice={1500}&minBedrooms={2}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
+url_plus_que_1500_2_bedroom = f"{base_url}minPrice={1500}&maxPrice={3000}&minBedrooms={2}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
+#3bedrooms
+url_moins_que_1000_3_bedroom = f"{base_url}minPrice={min_price}&maxPrice={1000}&minBedrooms={3}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
+url_moins_que_1500_3_bedroom = f"{base_url}minPrice={min_price}&maxPrice={1500}&minBedrooms={3}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
+url_plus_que_1500_3_bedroom = f"{base_url}minPrice={1500}&maxPrice={3000}&minBedrooms={3}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
+
+
+browser.visit(url_plus_que_1500_3_bedroom)
 
 #folder = browser.find_element(By.XPATH, "//i[@class='x1b0d499 x1d69dk1']")
 
@@ -58,11 +73,17 @@ market_soup = soup(html, 'html.parser')
 # End the automated browsing session
 browser.quit()
 
+#merde  qui sont pas des appartements donc je les mets dans une liste pour supprimer plus tard
+elements_a_supprimer = ['Filters', 'Categories']
+
 #Extract all the necessary info and insert into lists
 titles_div = market_soup.find_all('span', class_="x1lliihq x6ikm8r x10wlt62 x1n2onr6")
-#for loop that goes everything inside titles div
-#stripping everything that not pure text
+
+#for loop that goes everything inside titles div & stripping everything that not pure text
 titles_list = [title.text.strip() for title in titles_div]
+
+#Nouvelle liste cleans
+titles_clean = [title for title in titles_list if title not in elements_a_supprimer]
 
 prices_div = market_soup.find_all('span', class_="x193iq5w xeuugli x13faqbe x1vvkbs xlh3980 xvmahel x1n0sxbx x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x4zkp8e x3x7a5m x1lkfr7t x1lbecb7 x1s688f xzsf02u")
 prices_list = [price.text.strip() for price in prices_div]
@@ -85,22 +106,19 @@ min_length = min(len(titles_list), len(prices_list), len(city_list), len(urls_li
 for i in range(min_length):
     room_dict = {}
 
-    title_split = titles_list[i].split()
+    
+    room_dict["title"] = titles_clean[i] 
+    #Extract price (assuming it's a number with optional decimal point)
+    room_dict["Price"] = int(re.sub(r'[^\d.]', '', prices_list[i]))
+    #Add city and URL directly
+    room_dict["City"] = city_list[i]
+    room_dict["URL"] = urls_list[i]
+    room_dict["Image"] = img_list[i]
+    appartment_list.append(room_dict)
 
-    if len(title_split) > 2:
+  
 
-        #Extract price (assuming it's a number with optional decimal point)
-        room_dict["Price"] = int(re.sub(r'[^\d.]', '', prices_list[i]))
-        #Add city and URL directly
-        room_dict["City"] = city_list[i]
-        room_dict["URL"] = urls_list[i]
-        room_dict["Image"] = img_list[i]
-        appartment_list.append(room_dict)
 
-    else:
-        continue #Skip this entry and move to the next one
-
-#print("     ",appartment_list,"     ")
 
 appartment_list_df = pd.DataFrame(appartment_list)
 
