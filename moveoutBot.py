@@ -5,7 +5,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import time
 from selenium.webdriver.common.by import By
-
+import datetime
+from pymongo import MongoClient 
 #Set up Splinter
 browser = Browser('chrome')
 
@@ -25,10 +26,29 @@ furnished = False  # Meublé ou non
 neighborhood = "Montreal"  # Quartier souhaité
 recherche = "appartment"
 
+choixUrl = []
+
 # Construction de l'URL complet
-url = f"{base_url}minPrice={min_price}&maxPrice={max_price}&minBedrooms={min_bedrooms}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={neighborhood}&exact=false"
+url = f"{base_url}minPrice={min_price}&maxPrice={max_price}&minBedrooms={1}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={neighborhood}&exact=false"
 #&furnished={furnished}
 #&petsAllowed={pets_allowed}
+
+
+
+urls =[
+#1bedroom
+f"{base_url}minPrice={min_price}&maxPrice={1000}&minBedrooms={1}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
+f"{base_url}minPrice={min_price}&maxPrice={1500}&minBedrooms={1}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
+f"{base_url}minPrice={1500}&maxPrice={3000}&minBedrooms={1}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
+#2bedrooms
+f"{base_url}minPrice={min_price}&maxPrice={1000}&minBedrooms={2}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
+f"{base_url}minPrice={min_price}&maxPrice={1500}&minBedrooms={2}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
+f"{base_url}minPrice={1500}&maxPrice={3000}&minBedrooms={2}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
+
+]
+
+
+
 
 #1bedroom
 url_moins_que_1000_1_bedroom = f"{base_url}minPrice={min_price}&maxPrice={1000}&minBedrooms={1}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
@@ -38,15 +58,16 @@ url_plus_que_1500_1_bedroom = f"{base_url}minPrice={1500}&maxPrice={3000}&minBed
 url_moins_que_1000_2_bedroom = f"{base_url}minPrice={min_price}&maxPrice={1000}&minBedrooms={2}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
 url_moins_que_1500_2_bedroom = f"{base_url}minPrice={min_price}&maxPrice={1500}&minBedrooms={2}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
 url_plus_que_1500_2_bedroom = f"{base_url}minPrice={1500}&maxPrice={3000}&minBedrooms={2}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
+
 #3bedrooms
 url_moins_que_1000_3_bedroom = f"{base_url}minPrice={min_price}&maxPrice={1000}&minBedrooms={3}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
 url_moins_que_1500_3_bedroom = f"{base_url}minPrice={min_price}&maxPrice={1500}&minBedrooms={3}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
 url_plus_que_1500_3_bedroom = f"{base_url}minPrice={1500}&maxPrice={3000}&minBedrooms={3}&minBathrooms={min_bathrooms}&minSqft={min_sqft}&maxSqft={max_sqft}&daysSinceListed={days_listed}&query={min_bedrooms}+bedroom+{recherche}&exact=false"
 
 
-browser.visit(url_plus_que_1500_3_bedroom)
 
-#folder = browser.find_element(By.XPATH, "//i[@class='x1b0d499 x1d69dk1']")
+
+browser.visit(url)
 
 # Scroll down to load more results
 
@@ -117,7 +138,7 @@ for i in range(min_length):
     appartment_list.append(room_dict)
 
   
-
+print(appartment_list)
 
 
 appartment_list_df = pd.DataFrame(appartment_list)

@@ -6,7 +6,6 @@ import os
 import time
 
 
-
 options = Options()
 options.add_argument("--window-size=1920,1080")
 driver = webdriver.Chrome(options=options)
