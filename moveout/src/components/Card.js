@@ -2,7 +2,11 @@ import React from 'react'
 import CardItem from './CardItem'
 import './Cards.css'
 
+
+
 function Card() {
+  const {MongoClient} = require("mongodb");
+
   return (
     <div className="cards">
         <h1>76 Résultats</h1>
