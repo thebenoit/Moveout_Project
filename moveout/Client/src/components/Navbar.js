@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MoveoutLogo from "./Logo.js";
 import { Button } from "./Button.js";
-import "src/components/navbar.css";
+import "../components/navbar.css";
 
 function Navbar() {
   const [click, setClick] = useState(false);

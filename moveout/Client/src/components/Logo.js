@@ -1,5 +1,5 @@
 import React from "react";
-import 'src/components/Logo.css';
+import '../components/Logo.css';
 
 function Logo({titre, imageSrc, imageSVG,action}) {
   

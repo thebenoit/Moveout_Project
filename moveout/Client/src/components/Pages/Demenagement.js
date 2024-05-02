@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //import "../../App.css"
 import Cards from "../Card";
 import MovingLogo from "../Logo";
-import "src/components/Logo.css";
+import "../Logo.css";
 import { Link } from "react-router-dom";
-import "src/components/navbar.css";
+import "../navbar.css";
 import { Button } from "../Button";
 
 function Demenagement() {
