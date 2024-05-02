@@ -2,6 +2,7 @@
 const express = require('express')
 const cors = require('cors')// permit to access server from differents domain
 const bodyParser = require('body-parser')//for form post
+const router = require('./routes/router')
 
 const app = express()//calling express to use server
 app.use(bodyParser.json())//apcepting as json data to read it 
@@ -14,6 +15,9 @@ const corsOptions = {
 }
 
 app.use(cors[corsOptions])
+app.use('/',router)
+
+
 
 const port = 4000//port to run the serve on
 const server = app.listen(port, () =>{
