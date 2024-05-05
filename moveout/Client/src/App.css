@@ -93,21 +93,17 @@
   background: #007aff;
   border: 0px;
   color: #fff;
-  transition: all 0,3s ease-out;
   cursor: pointer;
   align-items: center;
 }
 
 .contactForm button:hover {
-display: block;
-margin: 40px auto;
-width: 150px;
-padding: 10px;
-border-radius: 22px;
-background: #007aff;
-border: 0px;
-color: #fff;
+background: #0072ec;
 transition: all 0,3s ease-out;
-align-items: center;
 
+
+}
+
+.required {
+  color: red;
 }
