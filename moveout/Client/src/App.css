@@ -8,7 +8,7 @@
 .home,
 .demenagement,
 .products,
-.sign-up {
+.login {
   display: flex;
   height: 90vh;
   align-items: center;
@@ -47,11 +47,67 @@
   font-size: 100px;
 }
 
-.sign-up {
+.login {
   /*background-image: url('/images/img-8.jpg');*/
   background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+ 
+  
+  font-size: 30px;
+}
+
+.contactForm{
+  margin: 0 auto;
+  display: block;
+  width: 400px;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  opacity: 75%;
+
+}
+.contactForm h1{
+  align-items: center;
+
+}
+.contactForm label {
+  display: block;
+  width: 380px;
+  padding: 5px;
+  margin-top: 30px;
+}
+
+.contactForm input {
+  display: block;
+  width: 340px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid gray;
+}
+
+.contactForm button {
+  display: block;
+  margin: 40px auto;
+  width: 150px;
+  padding: 10px;
+  border-radius: 22px;
+  background: #007aff;
+  border: 0px;
   color: #fff;
-  font-size: 100px;
+  transition: all 0,3s ease-out;
+  cursor: pointer;
+  align-items: center;
+}
+
+.contactForm button:hover {
+display: block;
+margin: 40px auto;
+width: 150px;
+padding: 10px;
+border-radius: 22px;
+background: #007aff;
+border: 0px;
+color: #fff;
+transition: all 0,3s ease-out;
+align-items: center;
+
 }

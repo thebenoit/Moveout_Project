@@ -17,6 +17,7 @@ router.get('/appartments', (req, res) => {
     }
     
 })
+
 router.get('/users', (req, res) => {
 
     

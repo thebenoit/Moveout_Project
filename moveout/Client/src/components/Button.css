@@ -17,11 +17,25 @@
     cursor: pointer;
 
 }
+.btn-login{
+    padding: 8px 20px;
+    border: 2px;
+    border-radius: 22px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+
 
 .btn--primary {
     background-color: var(--primary);
     color: #242424;
     border: 1px solid var(--primary);
+
+}
+
+.btn--primary--login{
 
 }
 
@@ -39,6 +53,20 @@
     padding: 8px 20px;
     border: 1px solid var(--primary);
     transition: all 0.3s ease-out;
+}
+
+.btn--outline-login {
+    
+    display: block;
+    margin: 40px auto;
+    width: 150px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid royalblue;
+    color: royalblue;
+    background-color: #ffffff;
+    cursor: pointer;
+  
 }
 
 .btn--medium {

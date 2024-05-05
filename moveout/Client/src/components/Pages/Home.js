@@ -6,11 +6,12 @@ import Demenagement from "./Demenagement";
 import Footer from "../Footer";
 
 function Home() {
+
   return (
     <>
       <HeroSection />
-      <Demenagement />
-      <Footer />
+      
+      
     </>
   );
 }
