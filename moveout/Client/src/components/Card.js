@@ -4,6 +4,9 @@ import "../components/Cards.css";
 // const {MongoClient} = require("mongodb");
 
 function Card() {
+
+  
+
   return (
     <div className="cards">
       <h1>76 Résultats</h1>
