@@ -5,7 +5,7 @@ import "../components/Cards.css";
 
 function Card() {
 
-  const [data,setData] = useEffect()
+  //const [data,setData] = useEffect()
 
   
 
