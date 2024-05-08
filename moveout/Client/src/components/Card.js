@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CardItem from "../components/CardItem";
 import "../components/Cards.css";
 // const {MongoClient} = require("mongodb");
 
 function Card() {
+
+  const [data,setData] = useEffect()
+
+  
 
   
 
