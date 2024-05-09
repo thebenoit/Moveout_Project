@@ -3,9 +3,9 @@ import CardItem from "../components/CardItem";
 import "../components/Cards.css";
 // const {MongoClient} = require("mongodb");
 
-function Card() {
+function Card({data}) {
 
-  //const [data,setData] = useEffect()
+//const [data,setData] = useEffect()
 
   
 
