@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Cards from '../Card'
 
 function Appartement() {
-  const [data,setData] = useEffect([])
-  
+ 
 
   return (
     <>
