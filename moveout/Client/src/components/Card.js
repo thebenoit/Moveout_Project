@@ -1,80 +1,87 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardItem from "../components/CardItem";
 import "../components/Cards.css";
-import axios from 'axios';
+import axios from "axios";
+import { FixedSizeGrid as Grid } from "react-window";
+
 // const {MongoClient} = require("mongodb");
 
 function Card() {
-
   const [apartments, setApartments] = useState([]);
-  const APPART_URL = "http://localhost:4000/appartments"
+  const [nbAppartement, setNbAppartement] = useState();
+  const APPART_URL = "http://localhost:4000/appartments";
 
-  
+  useEffect(() => {
+    /**
+     * méthode qui fetch le backend API qui contient les
+     * data des appartements
+     */
+    const axiosFetchData = async () => {
+      try {
+        // Fetch data using Axios
+        const response = await axios.get(APPART_URL);
+        // Set fetched data into state
+        setApartments(response.data);
+        setNbAppartement(apartments.length)
+      } catch (error) {
+        console.error("Error fetching apartment data:", error);
+      }
+    };
+    axiosFetchData();
+  }, []);
 
-    useEffect(() => {
+  const CardCell = ({ columnIndex, rowIndex, style }) => {
+    //Calculate the index using row and column indices
+    const index = rowIndex * 3 + columnIndex; // 3 columns per row
 
-  /**
-   * méthode qui fetch le backend API qui contient les
-   * data des appartements 
-   */
-  const axiosFetchData = async () => {
-    try {
-      // Fetch data using Axios
-      const response = await axios.get(APPART_URL);
-      // Set fetched data into state
-      setApartments(response.data);
-    } catch (error) {
-      console.error("Error fetching apartment data:", error);
-    }
+    if (index >= apartments.length) return null; // prevent out-of bounce errors
+
+    const { price, title, img, url } = apartments[index];
+
+    
+
+    return (
+      <div style={style} >
+        
+        <CardItem
+          src={img}
+          text={`${price}$ ${title}`}
+          path={url}
+          label="Facebook"
+        />
+      </div>
+    );
   };
-      axiosFetchData()
 
-    },[])
+  const ApartmentGrid = () => {
 
-  
-
-  
+    return (
+      <Grid
+        columnCount={3}
+        rowCount={Math.ceil(apartments.length / 3)} //Number of rows needed
+        columnWidth={300}
+        height={900}
+        rowHeight={300}
+        width={850}
+      >
+        {CardCell}
+        
+      </Grid>
+    );
+  };
 
   return (
     <div className="cards">
-      <h1>76 Résultats</h1>
+      <h1> {nbAppartement} Résultats</h1>
       <div className="cards__container">
         <div className="cards__wrapper">
-          <ul className="cards__items">
-            <CardItem
-              src="/Image_Logos/img_room_test.jpg"
-              text="900 3 beds Appartment"
-              label="Facebook"
-              path="/"
-            />
-            <CardItem
-              src="/Image_Logos/img_room_test.jpg"
-              text="900 3 beds Appartment"
-              label="Centris"
-              path="/"
-            />
-            <CardItem
-              src="https://scontent.fymq2-1.fna.fbcdn.net/v/t39.30808-6/438145887_1627342808036890_6667496797886134274_n.jpg?stp=c0.58.526.526a_dst-jpg_p526x296&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=QaHMY0zQSGIQ7kNvgFyKrwg&_nc_ht=scontent.fymq2-1.fna&oh=00_AfAsuq35NP6tDLG_WjFtAvqkqxYRsV25wbD_BJm9IzYpnQ&oe=6640CC05"
-              text="900 3 beds Appartment"
-              label="Centris"
-              path="/"
-            />
-          </ul>
-          <ul className="cards__items">
-          {apartments.map((apartment,index) =>(
-                <CardItem
-                key={index}
-                src={apartment.img}
-                text={`${apartment.price}$ ${apartment.title}`}
-                path={apartment.url}
-                label="Facebook"
-                />
+          
 
-            ))}
-            
-          </ul>
+          <ApartmentGrid />
         </div>
+        
       </div>
+      
     </div>
   );
 }
