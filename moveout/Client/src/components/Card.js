@@ -6,10 +6,17 @@ import { FixedSizeGrid as Grid } from "react-window";
 
 // const {MongoClient} = require("mongodb");
 
+
+
 function Card() {
   const [apartments, setApartments] = useState([]);
   const [nbAppartement, setNbAppartement] = useState();
   const APPART_URL = "http://localhost:4000/appartments";
+
+
+  
+
+
   
 
   useEffect(() => {
@@ -55,23 +62,12 @@ function Card() {
     );
   };
 
-  const ApartmentGrid = () => {
-    if(w < 960) {
-      return(
-<Grid
-          columnCount={1}
-          rowCount={Math.ceil(apartments.length / 3)} //Number of rows needed
-          columnWidth={350}
-          height={900}
-          rowHeight={300}
-          width={350}
-        >
-          {CardCell}
-          
-        </Grid>
+  
 
-      )
-    }else{
+  const ApartmentGrid = () => {
+
+    
+    if (w >= 960) {
 
       return (
         <Grid
@@ -87,6 +83,24 @@ function Card() {
         </Grid>
       );
 
+
+
+    }
+   else {
+      return(
+<Grid
+          columnCount={1}
+          rowCount={Math.ceil(apartments.length / 3)} //Number of rows needed
+          columnWidth={350}
+          height={900}
+          rowHeight={300}
+          width={350}
+        >
+          {CardCell}
+          
+        </Grid>
+
+      )
     }
     
   };
@@ -94,7 +108,7 @@ function Card() {
    * méthode qui permet de savoir la taille de la fenetre à tout moment
    */
   const useWindowWidth = () => {
-    const [windowWidth, setWindowWidth] = useState(0);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() =>{
       // Fonction pour mettre à jour le state lorsque la fenêtre est redimensionnée
@@ -116,10 +130,9 @@ function Card() {
   }
 
   const w = useWindowWidth();
-
   return (
     <div className="cards">
-     
+     <h1>taille: {w}</h1>
       <h1> {apartments.length} Résultats</h1>
       <div className="cards__container">
         <div className="cards__wrapper">
