@@ -1,28 +1,25 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const appartmentSchema = new Schema({
-    title:{type:String},
-    price:{type:Number},
-    city:{type:String},
-    bedrooms:{type:Number},
-    city:{type:String},
-    url:{type:String},
-    img:{type:String},
-    date_scraped:{type:Date}
-
-})
+    title: { type: String },
+    price: { type: Number },
+    city: { type: String },
+    bedrooms: { type: Number },
+    url: { type: String },
+    img: { type: String },
+    date_scraped: { type: Date }
+});
 
 const usersSchema = new Schema({
-    name:{type:String},
-    email:{type:String},
-    tel:{type:Number},
-   
+    name: { type: String },
+    email: { type: String },
+    tel: { type: Number }
+});
 
-})
+const Appartments = mongoose.model('Appartments', appartmentSchema, 'appartments_2024_05_11_17_03');
+//const Users = mongoose.model('Users', usersSchema, 'users');
 
-const appartments = mongoose.model('Appartments',appartmentSchema,'appartments_2024_04_28_20_34')
-const users = mongoose.model('Users',usersSchema,'users')
+const mySchemas = { 'Appartments': Appartments };  // Ici, vous devez passer les objets modèles
 
-const mySchemas = {appartment:'Appartments',users:'Users'}
-
+module.exports = mySchemas;
