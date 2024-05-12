@@ -132,7 +132,6 @@ function Card() {
   const w = useWindowWidth();
   return (
     <div className="cards">
-     <h1>taille: {w}</h1>
       <h1> {apartments.length} Résultats</h1>
       <div className="cards__container">
         <div className="cards__wrapper">

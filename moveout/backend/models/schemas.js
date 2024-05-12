@@ -17,7 +17,7 @@ const usersSchema = new Schema({
     tel: { type: Number }
 });
 
-const Appartments = mongoose.model('Appartments', appartmentSchema, 'appartments_2024_05_11_18_29');
+const Appartments = mongoose.model('Appartments', appartmentSchema, 'appartments_2024_05_12_15_15');
 //const Users = mongoose.model('Users', usersSchema, 'users');
 
 const mySchemas = { 'Appartments': Appartments };  // Ici, vous devez passer les objets modèles
