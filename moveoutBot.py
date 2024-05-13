@@ -79,10 +79,10 @@ def scrapeFb():
           # Scroll down to load more results
 
           #define the number of times to scroll the page
-          scroll_count = 4
+          scroll_count = 6
 
           #Define the delay (in seconds) between each scroll
-          scroll_delay = 4
+          scroll_delay = 8
 
           #Loop to perform scrolling
           for _ in range(scroll_count):
