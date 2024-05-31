@@ -5,7 +5,11 @@
 }
 
 footer{
-    background-color: #111;
+    /**background-color: #111;*/
+}
+.footer-sign{
+    display: flex;
+    justify-content: center;
 }
 
 .footer-container{

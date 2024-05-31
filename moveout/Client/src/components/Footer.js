@@ -20,7 +20,8 @@ function Footer() {
         </Link>
 
        </section>
-
+       
+      <p className="footer-sign">© Moveout</p>
       
     </div>
   )
