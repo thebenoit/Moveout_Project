@@ -18,7 +18,7 @@ mongoPassword ="Mspdslxd123#"
 current_date = datetime.now().strftime("%Y_%m_%d_%H_%M") 
 print("current_date: ",current_date)
 
-collection_name = f"appartments_{current_date}"
+collection_name = "appartments"
 
 client = MongoClient(f"mongodb://{mongoUser}:{mongoPassword}@localhost:27017/")
 
