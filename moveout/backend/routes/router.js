@@ -29,6 +29,7 @@ router.get("/appartments", async(req, res) => {
     console.log("Recherche dans la collection: ", appartments.collection.name);
     const docCount = await appartments.collection.countDocuments({});
     console.log("NB_Documents ", docCount);
+    //data est égale à tout ce qu'il trouve dans la collection
     const appartData = await appartments.find({});
     console.log("Données récupérées:");
 
