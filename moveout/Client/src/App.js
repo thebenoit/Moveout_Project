@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Home from "../src/components/Pages/Home";
 import Demenagement from "../src/components/Pages/Demenagement";
 import Login from "../src/components/Pages/Login"
-import Appartments from "../src/components/Card"
+import Appartments from "../src/components/Pages/Appartements"
 
 function App() {
   return (
