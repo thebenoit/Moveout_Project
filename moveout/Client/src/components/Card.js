@@ -6,18 +6,10 @@ import { FixedSizeGrid as Grid } from "react-window";
 
 // const {MongoClient} = require("mongodb");
 
-
-
 function Card() {
   const [apartments, setApartments] = useState([]);
   const [nbAppartement, setNbAppartement] = useState();
   const APPART_URL = "http://localhost:4000/appartments";
-
-
-  
-
-
-  
 
   useEffect(() => {
     /**
@@ -30,13 +22,11 @@ function Card() {
         const response = await axios.get(APPART_URL);
         // Set fetched data into state
         setApartments(response.data);
-        
       } catch (error) {
         console.error("Error fetching apartment data:", error);
       }
     };
     axiosFetchData();
-    
   }, []);
 
   const CardCell = ({ columnIndex, rowIndex, style }) => {
@@ -47,11 +37,8 @@ function Card() {
 
     const { price, title, img, url } = apartments[index];
 
-    
-
     return (
       <div style={style}>
-        
         <CardItem
           src={img}
           text={`${price}$ ${title}`}
@@ -62,13 +49,8 @@ function Card() {
     );
   };
 
-  
-
   const ApartmentGrid = () => {
-
-    
     if (w >= 960) {
-
       return (
         <Grid
           columnCount={3}
@@ -79,16 +61,11 @@ function Card() {
           width={850}
         >
           {CardCell}
-          
         </Grid>
       );
-
-
-
-    }
-   else {
-      return(
-<Grid
+    } else {
+      return (
+        <Grid
           columnCount={1}
           rowCount={Math.ceil(apartments.length / 3)} //Number of rows needed
           columnWidth={350}
@@ -97,12 +74,9 @@ function Card() {
           width={350}
         >
           {CardCell}
-          
         </Grid>
-
-      )
+      );
     }
-    
   };
   /**
    * méthode qui permet de savoir la taille de la fenetre à tout moment
@@ -110,24 +84,21 @@ function Card() {
   const useWindowWidth = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-    useEffect(() =>{
+    useEffect(() => {
       // Fonction pour mettre à jour le state lorsque la fenêtre est redimensionnée
       const handleResize = () => {
-        setWindowWidth(window.innerWidth)
-      }
+        setWindowWidth(window.innerWidth);
+      };
       //ajouter un gestionnaire d'évènement pour resizd
-      window.addEventListener('resize',handleResize);
+      window.addEventListener("resize", handleResize);
 
       // Supprimer le gestionnaire d'événements au nettoyage
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-
-
-    })
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    });
     return windowWidth;
-
-  }
+  };
 
   const w = useWindowWidth();
   return (
@@ -135,16 +106,11 @@ function Card() {
       <h1> {apartments.length} Résultats</h1>
       <div className="cards__container">
         <div className="cards__wrapper">
-
           <div className="cards__item">
-          <ApartmentGrid />
+            <ApartmentGrid />
           </div>
-          
-          
         </div>
-        
       </div>
-      
     </div>
   );
 }

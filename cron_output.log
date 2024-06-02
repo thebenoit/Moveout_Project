@@ -1,0 +1,15 @@
+current_date:  2024_06_02_14_20
+Nombre de documents supprimés : 932
+listes:  ['appartments_2024_05_30_14_20', 'appartments_2024_05_29_14_20', 'appartments']
+client: MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True)
+collection: Collection(Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'Appartements_moveout'), 'appartments')
+bedrooms: 1
+Longueur des listes: titres=192, prix=192, villes=192, urls=192,img=192
+Longueur des listes: titres=192, prix=192, villes=192, urls=192,img=192
+Longueur des listes: titres=25, prix=24, villes=24, urls=24,img=24
+bedrooms: 2
+Longueur des listes: titres=25, prix=24, villes=24, urls=24,img=24
+Longueur des listes: titres=25, prix=24, villes=24, urls=24,img=24
+Longueur des listes: titres=25, prix=24, villes=24, urls=24,img=24
+Essai du bloc try-except
+Erreur capturée : Test d'erreur

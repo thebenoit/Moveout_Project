@@ -7,23 +7,25 @@ function BoxChoix() {
   const [MiniimumPrix, setMinimumPrix] = useState();
   //maximum bedroom à choisir
   const [Maximumbedroom, setMaximumBedroom] = useState();
+    // State to handle the range input value
+    const [rangeValue, setRangeValue] = useState(40);
 
   return (
-    <div className="Box">
-      <h1>Button</h1>
-      <h1>Allo</h1>
-
-      <form className="BoxChoixForm">
-        <label>Maximum prix</label>
-        <input type="number" />
-
-        <label>Minimum prix</label>
-        <input type="number" />
-
-        <label>Maximmum bedrooms</label>
-        <input type="number" />
-      </form>
+    
+    <div className="p-4">
+    <input
+      type="range"
+      min="0"
+      max="3000"
+      value={rangeValue}
+      className="range w-full"
+      onChange={(e) => setRangeValue(e.target.value)}
+    />
+    <div className="mt-2">
+      Value: {rangeValue}
     </div>
+  </div>
+   
   );
 }
 
